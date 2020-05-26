@@ -60,7 +60,10 @@ const apiPathes = apiTemplatesSet1.map((apiPathTemplate) => {
 
 //заменяем в каждой строке массива данные по шаблону
 function getApiPath(user, apiPathTemplate) {
-  let result = apiPathTemplate.replace(/%id%\/%(.+)%/, (match, p1) => `${user.id}/${user[p1]}`)
+  let result = apiPathTemplate.replace(
+    /%id%\/%(.+)%/,
+    (match, p1) => `${user.id}/${encodeURIComponent(user[p1])}`
+  )
   return result
 }
 

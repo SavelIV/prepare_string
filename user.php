@@ -16,7 +16,7 @@ class userApi
     return preg_replace_callback(
       '|%(.*)%|isU',
       function ($matches) {
-        return $this->user[$matches[1]];
+        return rawurlencode($this->user[$matches[1]]);
       },
       $apiTemplate
     );
